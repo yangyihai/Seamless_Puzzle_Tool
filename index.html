@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片无缝拼接工具</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>图片无缝拼接工具</h1>
+        
+        <div class="controls">
+            <label for="file-upload" class="btn">上传图片</label>
+            <input type="file" id="file-upload" class="file-input" accept="image/*" multiple>
+            <button class="btn" id="clear-all">清除所有</button>
+            <button class="btn" id="save-image">保存拼接图</button>
+        </div>
+        
+        <div class="tips">提示：可拖动图片调整位置；拉伸四角和边缘可改变图片大小</div>
+        
+        <div class="canvas-container" id="canvas-container"></div>
+        
+        <div class="thumbnail-container" id="thumbnail-container"></div>
+
+        <div class="layout-options">
+            <h3>布局模式</h3>
+            <div class="layout-selection">
+                <button class="layout-btn active" data-layout="free">自由拼图</button>
+                <button class="layout-btn" data-layout="grid2x2">四宫格</button>
+                <button class="layout-btn" data-layout="grid3x3">九宫格</button>
+            </div>
+        </div>
+        
+        <div class="settings">
+            <h3>羽化设置</h3>
+            <label>
+                羽化范围 (px):
+                <input type="range" id="feather-range" min="0" max="100" value="30">
+                <span id="feather-value">30px</span>
+            </label>
+            <label>
+                混合模式:
+                <select id="blend-mode">
+                    <option value="normal">正常</option>
+                    <option value="multiply" selected>正片叠底</option>
+                    <option value="screen">滤色</option>
+                    <option value="overlay">叠加</option>
+                    <option value="soft-light">柔光</option>
+                </select>
+            </label>
+            <label>
+                不透明度:
+                <input type="range" id="opacity" min="10" max="100" value="100">
+                <span id="opacity-value">100%</span>
+            </label>
+        </div>
+    </div>
+
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>正在生成图片，请稍候...</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- 模块化JS文件 -->
+    <script src="js/config.js"></script>
+    <script src="js/imageUpload.js"></script>
+    <script src="js/imageManipulation.js"></script>
+    <script src="js/layoutManager.js"></script>
+    <script src="js/effectsManager.js"></script>
+    <script src="js/thumbnailManager.js"></script>
+    <script src="js/exportManager.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
